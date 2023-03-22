@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <title>Instagram - Clone coding</title>
+    <style>
+        @import url(css/default.css);
+        @import url(css/gnb.css);
+
+        .main {
+            background-color: #fafafa;
+            padding-top: 25px;
+
+            align-items: flex-start;
+        }
+
+        .feed {
+            background-color: white;
+            width: 470px;
+            margin-right: 20px;
+            height: 200px;
+
+            border-radius: 8px;
+            border: lightgray;
+
+
+            font-size: 13px;
+
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .account {
+            width: 320px;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .account-content {
+            width: 100%;
+        }
+
+        .account-content>li {
+            justify-content: space-between;
+
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .account-content>li>p {
+            margin-left: 20px;
+            margin-right: auto;
+
+            align-items: flex-start;
+        }
+
+        .account-content>li>a {
+            color: skyblue;
+            font-size: 13px;
+        }
+
+        .account-content>li>p>span:first-child {
+            font-weight: bold;
+            color: black;
+        }
+
+        .account-content>li>p>span:last-child {
+            font-weight: bold;
+            color: gray;
+        }
+
+        .img-wrap {
+            border-radius: 50%;
+            overflow: hidden;
+            border: 0.5px solid #f2f2f2;
+            display: flex;
+        }
+
+        .li.suggestion>span {
+            color: black;
+        }
+
+        .li.suggestion>a {
+            color: gray;
+        }
+
+        .about {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .about>a {
+            color: lightgray;
+            font-size: 11px;
+            margin-right: 2px;
+        }
+
+        .name {
+            color: lightgray;
+            font-size: 11px;
+
+            margin-right: auto;
+        }
+
+        .profile {
+            justify-content: space-between;
+            width: 100%;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .profile>p {
+            margin-left: 18px;
+            margin-right: auto;
+        }
+
+        .profile>p>span:first-child {
+            font-weight: bold;
+            margin-bottom: 5px;
+            margin-right: auto;
+        }
+
+        .imgs>div>img {
+            width: 100%;
+
+        }
+
+        .feed-icons{
+            width: 97%;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        .feed-icons > img{
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .feed-icons>img:last-child {
+            margin-left: auto;
+
+        }
+
+        .likes {
+            margin-right: auto;
+            margin-left: 20px;
+            font-size: bold;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        .comments{
+            width: 92%;
+            margin-top: 5px;
+        }
+        .comments > span.title{
+            font-weight: bold;
+        }
+        .comments > span.hashtag{
+            color: darkblue;
+        }
+        .count{
+            margin-left: 20px;
+            margin-right: auto;
+            color:lightgray;
+
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .time{
+            margin-left: 20px;
+            margin-top: auto;
+            font-size: 10px;
+            color: lightgray;
+        }
+        .swiper{
+            width: 470px;
+        }
+        .swiper-button-prev, .swiper-button-next{
+            width: 25px;
+            height: 25px;
+         background-color: rgba (255,255,255,0.5);
+          border-radius: 56%;
+}
+.swiper-button-prev:after, .swiper-button-next:after{
+    font-size: 12px;
+color: white;
+font-weight: bold;
+}
+.swiper-pagination-bulet{
+    background-color: white;
+}
+    </style>
+    <script>
+        let is_liked = true;
+        function like(){
+            if(is_liked == true){
+          $('#heart').attr('src','image/icons/12.png')
+          is_liked =false;
+        } else{
+            $('#heart').attr('src','image/icons/5.png')
+          is_liked =true;
+        }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="gnb flex-row">
+        <div class="gnb-content flex-row">
+            <div class="logo flex-row">
+                <img width="102" src="image/logo_instagram.png" alt="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-chevron-down" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z">
+                    </path>
+                </svg>
+            </div>
+            <div class="search-box flex-row">
+                <input type="text" placeholder="search">
+            </div>
+        </div>
+        <div class="icons flex-row">
+            <img src="image/icons/1.png">
+            <img src="image/icons/2.png">
+            <img src="image/icons/3.png">
+            <img src="image/icons/4.png">
+            <img src="image/icons/5.png">
+            <img width="32" src="image/icons/6.png">
+        </div>
+    </div>
+    <div class="main flex-row">
+        <div class="feed flex-col">
+            <div class="profile flex-row">
+                <div class="img-wrap">
+                    <img widht="32" src="image/profile/1.png">
+                </div>
+                <p class="flex-col">
+                    <span>apple</span>
+                    <span>Brisbane, Queensland, Autralia</span>
+                </p>
+                <img src="image/icons/7.png">
+            </div>
+            <div class="imgs">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="image/post/1.png"></div>
+                    <div class="swiper-slide"><img src="image/post/2.png"></div>
+                    
+                </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+            </div>
+            <div class="feed-icons flex-row">
+                <img id="heart" onclick="like()" src="image/icons/5.png">
+                <img src="image/icons/9.png">
+                <img src="image/icons/2.png">
+                <img src="image/icons/10.png">
+            </div>
+            <div class="likes">
+                9,999 likes
+            </div>
+            <div class="comments">
+                <span class="title">apple</span>
+                "color, shape, tecture, negative space and a little bit of whinsy can be the can be the basis of great comosition."
+                <span class="hasstag">#iphone</span>
+            </div>
+            <div class="count">
+                View all 169 Comments
+            </div>
+            <div class="time">
+               20 HOUR AGO
+            </div>
+
+        </div>
+        <div class="account flex-col">
+            <div class="account-content">
+                <li class="flex-row">
+                    <div class="img-wrap">
+                        <img width="56" src="image/icons/6.png">
+                    </div>
+                    <p class="flex-col">
+                        <span>only_humann4</span>
+                        <span>sparta</span>
+                    </p>
+                    <a href="#">switch</a>
+                </li>
+                <li class="flex-row suggestion">
+                    <span>suggestions for you</span>
+                    <a href="#">see All</a>
+                </li>
+                <li class="flex-row friends">
+                    <div class="img-wrap">
+                        <img width="32" src="image/follower/1.png">
+                    </div>
+                    <p class="flex-col">
+                        <span>laylasss.n</span>
+                        <span>popular</span>
+                    </p>
+                    <a href="#">follow</a>
+                </li>
+                <li class="flex-row friends">
+                    <div class="img-wrap">
+                        <img width="32" src="image/follower/2.png">
+                    </div>
+                    <p class="flex-col">
+                        <span>meupi_</span>
+                        <span>popular</span>
+                    </p>
+                    <a href="#">follow</a>
+                </li>
+                <li class="flex-row friends">
+                    <div class="img-wrap">
+                        <img width="32" src="image/follower/3.png">
+                    </div>
+                    <p class="flex-col">
+                        <span>ahmdrezap_</span>
+                        <span>popular</span>
+                    </p>
+                    <a href="#">follow</a>
+                </li>
+                <li class="flex-row friends">
+                    <div class="img-wrap">
+                        <img width="32" src="image/follower/4.png">
+                    </div>
+                    <p class="flex-col">
+                        <span>bandungpanas_</span>
+                        <span>popular</span>
+                    </p>
+                    <a href="#">follow</a>
+                </li>
+                <li class="flex-row friends">
+                    <div class="img-wrap">
+                        <img width="32" src="image/follower/5.png">
+                    </div>
+                    <p class="flex-col">
+                        <span>rafaelnbh19</span>
+                        <span>popular</span>
+                    </p>
+                    <a href="#">follow</a>
+                </li>
+            </div>
+            <div class="about">
+                <a href="#">About</a>
+                <a href="#">Help</a>
+                <a href="#">Press</a>
+                <a href="#">API</a>
+                <a href="#">Jobs</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Locations</a>
+                <a href="#">Langguage</a>
+                <a href="#"> English</a>
+            </div>
+            <div class="name">
+                © 2023 INSTAGRAM FROM META
+            </div>
+        </div>
+    </div>
+    <script>
+        const swiper = new Swiper('.swiper', {
+          direction: 'horizontal',
+          loop: true,
+          pagination: {
+            el: '.swiper-pagination',
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      </script>
+</body>
+
+</html>
